@@ -1,0 +1,220 @@
+.header {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 40, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, #ffd700, #ff1493, #00bfff, #ffd700) 1;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.studio-lights {
+  height: 4px;
+  background: linear-gradient(90deg, #ffd700 0%, #ff1493 25%, #00bfff 50%, #32cd32 75%, #ffd700 100%);
+  animation: lightPulse 3s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+}
+
+.show-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .logo-icon {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px #ffd700);
+    animation: iconGlow 2s ease-in-out infinite alternate;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+
+    .logo-main {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ffd700, #ff1493, #00bfff);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+      letter-spacing: 0.1em;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    .logo-sub {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 600;
+    }
+  }
+}
+
+@keyframes iconGlow {
+  0% {
+    filter: drop-shadow(0 0 10px #ffd700);
+  }
+  100% {
+    filter: drop-shadow(0 0 20px #ffd700);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.phase-timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 20px;
+  }
+
+  .timeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 30px;
+    min-width: 80px;
+
+    @media (max-width: 768px) {
+      padding: 0.6rem 0.8rem;
+      min-width: 60px;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &.completed {
+      color: rgba(50, 205, 50, 0.8);
+
+      .step-icon {
+        background: linear-gradient(45deg, #32cd32, #00ff7f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    &.active {
+      color: white;
+      background: rgba(255, 215, 0, 0.1);
+      border: 2px solid #ffd700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+
+      .step-icon {
+        font-size: 1.8rem;
+        animation: activeIcon 1s ease-in-out infinite alternate;
+      }
+    }
+
+    &:hover:not(:disabled) {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .step-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+      transition: all 0.3s ease;
+
+      @media (max-width: 768px) {
+        font-size: 1.2rem;
+      }
+    }
+
+    .step-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+
+      @media (max-width: 768px) {
+        font-size: 0.6rem;
+      }
+    }
+
+    .step-connector {
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
+    }
+
+    &:last-child .step-connector {
+      display: none;
+    }
+  }
+}
+
+@keyframes activeIcon {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}

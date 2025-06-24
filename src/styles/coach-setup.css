@@ -1,0 +1,482 @@
+.coach-setup {
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+.studio-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+
+  .stage-spotlights {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .spotlight {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.6;
+      animation: spotlightSweep 8s ease-in-out infinite;
+
+      &.spotlight-1 {
+        background: radial-gradient(circle, #ffd700, transparent);
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      &.spotlight-2 {
+        background: radial-gradient(circle, #ff1493, transparent);
+        top: 20%;
+        right: 15%;
+        animation-delay: 1.6s;
+      }
+
+      &.spotlight-3 {
+        background: radial-gradient(circle, #00bfff, transparent);
+        bottom: 30%;
+        left: 20%;
+        animation-delay: 3.2s;
+      }
+
+      &.spotlight-4 {
+        background: radial-gradient(circle, #32cd32, transparent);
+        bottom: 15%;
+        right: 25%;
+        animation-delay: 4.8s;
+      }
+
+      &.spotlight-5 {
+        background: radial-gradient(circle, #ff6347, transparent);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: 6.4s;
+      }
+    }
+  }
+}
+
+@keyframes spotlightSweep {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate(20px, -15px) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-10px, 10px) scale(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(15px, 5px) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+.setup-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.setup-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #ffd700, #ff1493, #00bfff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .requirement-badge {
+    display: inline-block;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.coach-creator {
+  margin-bottom: 3rem;
+
+  .creator-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    h3 {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .creator-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 2rem;
+      align-items: end;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .input-section,
+      .color-section {
+        label {
+          display: block;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.9rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+      }
+
+      .coach-name-input {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.4);
+        }
+
+        &:focus {
+          outline: none;
+          border-color: #ffd700;
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+      }
+
+      .color-palette {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        .color-swatch {
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+          border: 3px solid transparent;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+
+          &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px currentColor;
+          }
+
+          &.selected {
+            border-color: white;
+            box-shadow: 0 0 20px currentColor;
+            transform: scale(1.1);
+
+            &::after {
+              content: "✓";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              color: white;
+              font-weight: bold;
+              font-size: 1.2rem;
+              text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            }
+          }
+        }
+      }
+
+      .add-coach-btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #ffd700, #ff8c00);
+        color: white;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+        white-space: nowrap;
+
+        span {
+          font-size: 1.2rem;
+          font-weight: 900;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        &:not(:disabled):hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+          background: linear-gradient(45deg, #ff8c00, #ffd700);
+        }
+      }
+    }
+  }
+}
+
+.coaches-lineup {
+  margin-bottom: 3rem;
+
+  h3 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+
+    .coach-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 2px solid var(--coach-color);
+      position: relative;
+      transition: all 0.3s ease;
+      text-align: center;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px var(--coach-color), 0 20px 40px rgba(0, 0, 0, 0.2);
+
+        .coach-spotlight {
+          opacity: 1;
+        }
+      }
+
+      .coach-spotlight {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, var(--coach-color), transparent);
+        border-radius: 50%;
+        filter: blur(20px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .coach-chair {
+        position: relative;
+        margin-bottom: 1rem;
+
+        .chair-back {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background: var(--coach-color);
+          margin: 0 auto;
+          position: relative;
+          box-shadow: 0 0 20px var(--coach-color);
+        }
+
+        .coach-avatar {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.9);
+          color: var(--coach-color);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 900;
+          font-size: 1.2rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .coach-info {
+        h4 {
+          color: white;
+          font-size: 1.2rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+
+        .coach-team-color {
+          width: 80px;
+          height: 4px;
+          border-radius: 2px;
+          margin: 0 auto;
+        }
+      }
+
+      .remove-coach-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 0, 0, 0.2);
+        color: white;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #ff0000;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+.proceed-panel {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  .ready-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .ready-light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #32cd32;
+      box-shadow: 0 0 10px #32cd32;
+      animation: readyPulse 1.5s ease-in-out infinite;
+    }
+
+    span {
+      color: #32cd32;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .proceed-btn {
+    padding: 1.2rem 3rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #32cd32, #00ff7f);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(50, 205, 50, 0.4);
+      background: linear-gradient(45deg, #00ff7f, #32cd32);
+    }
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes readyPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
