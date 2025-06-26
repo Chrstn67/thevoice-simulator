@@ -581,11 +581,10 @@
     border: 2px solid rgba(255, 215, 0, 0.3);
     text-align: center;
     max-width: 600px;
-    width: 100%;
 
     h2 {
       color: white;
-      font-size: 2.2rem;
+
       font-weight: 800;
       margin-bottom: 1rem;
       text-transform: uppercase;
@@ -734,9 +733,15 @@
 
   .vote-input-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: 1.5rem;
+    padding: 1rem;
+
+    grid-template-columns: 1fr;
+
+    @media (min-width: 576px) {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
 
     .vote-input-card {
       background: rgba(255, 255, 255, 0.05);

@@ -47,6 +47,7 @@
     border-radius: 20px;
     border: 2px solid;
     overflow: hidden;
+    margin: 1em;
 
     .team-header {
       padding: 1.5rem;
